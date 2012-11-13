@@ -1,0 +1,87 @@
+# Chinese (Taiwan) translation for basics.txt in PyGObject-Tutorial.
+# Copyright (C) GNU Free Documentation License 1.3
+# This file is distributed under the same license as the Python GTK+ 3 Tutorial package.
+# Shih-Yuan Lee (FourDollars) <fourdollars@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python GTK+ 3 Tutorial 3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-10 09:47\n"
+"PO-Revision-Date: 2012-11-13 23:18+0800\n"
+"Last-Translator: Shih-Yuan Lee (FourDollars) <fourdollars@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) <zh_TW@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../source/basics.txt:4
+# 24b2f9d48b8e45bd859945b0860953ff
+msgid "Basics"
+msgstr "基礎知識"
+
+#: ../source/basics.txt:5
+# 9db7f5bec09a41f384f19c77be527e38
+msgid "This section will introduce some of the most important aspects of GTK+."
+msgstr "這個章節將會介紹一些 GTK+ 最重要的觀念。"
+
+#: ../source/basics.txt:12
+# 6554ff54acd24984a89a55e5f009b8df
+msgid "Main loop and Signals"
+msgstr "主迴圈 (Main loop) 與信號 (Signal)"
+
+#: ../source/basics.txt:13
+# 798f7a779c44413caca68c8a81d13ad3
+msgid "Like most GUI toolkits, GTK+ uses an event-driven programming model. When the user is doing nothing, GTK+ sits in the main loop and waits for input. If the user performs some action - say, a mouse click - then the main loop \"wakes up\" and delivers an event to GTK+."
+msgstr "像大多數的圖型開發工具 (GUI toolkit) 一樣，GTK+ 使用事件驅動 (event-driven) 的程式設計模型。當使用者什麼事都沒做，GTK+ 在主迴圈裡等待輸入；當使用者執行了某個動作 - 例如：點擊滑鼠 - 主迴圈就會〝甦醒〞並且傳遞一個事件給 GTK+。"
+
+#: ../source/basics.txt:18
+# b0cde78dd2054458ba6fb7a48d3d48e6
+msgid "When widgets receive an event, they frequently emit one or more signals. Signals notify your program that \"something interesting happened\" by invoking functions you've connected to the signal. Such functions are commonly known as *callbacks*. When your callbacks are invoked, you would typically take some action - for example, when an Open button is clicked you might display a file chooser dialog. After a callback finishes, GTK+ will return to the main loop and await more user input."
+msgstr "當 widgets 接收到一個事件，它們會頻繁地發出一個或是更多的信號。信號藉著呼叫那些連接到這個信號的函式來通知你的程式〝有趣的事情發生了囉〞。這樣的函式通常叫做 callbacks，當你的 callbacks 被呼叫時，傳統上你會做某些動作 - 例如：當一個開啟的按紐被點擊時，你可能會顯示一個用來選擇檔案的對話框；在一個 callback 結束後，GTK+ 會回到主回圈裡等待更多的輸入。"
+
+#: ../source/basics.txt:28
+# f4cbd7ea24ba48c598d555447174c9fb
+msgid "A generic example is:"
+msgstr "一般化的例子會像是："
+
+#: ../source/basics.txt:34
+# 972f44f8e7b8421980087239922b3322
+msgid "Firstly, *widget* is an instance of a widget we created earlier. Next, the event we are interested in. Each widget has its own particular events which can occur. For instance, if you have a button you usually want to connect to the \"clicked\" event. This means that when the button is clicked, the signal is issued. Thirdly, the *callback* argument is the name of the callback function. It contains the code which runs when signals of the specified type are issued. Finally, the *data* argument includes any data which should be passed when the signal is issued. However, this argument is completely optional and can be left out if not required."
+msgstr "首先 *widget* 是我們先前建立 widget 的一個實體 (instance)；然後是我們所感興趣的事件，每個 widget 都有著自己特別的事件會發生，例如：如果你有一個按紐，你通常會想要連接到〝clicked〞的事件，這代表著，當那個按紐被點擊時，信號就會被發出來；接下來 *callback* 參數就是 callback function 的名稱，它包括這個指定的信號發出來時會執行的程式碼；最後是 *data* 參數包含任何在信號發出時應該被傳遞的資料，不過這個參數是可有可無的，不需要時就不用提供。"
+
+#: ../source/basics.txt:46
+# 267da506661044239ff7a68a0d6ce2b6
+msgid "The function returns a number that identifies this particular signal-callback pair. It is required to disconnect from a signal such that the callback function will not be called during any future or currently ongoing emissions of the signal it has been connected to."
+msgstr "這個函式會回傳一個數字用來辨識這些特定的 signal-callback 配對，它被用來中斷信號連結，使得 callback function 不會被未來或是正在發出的信號所呼叫到。"
+
+#: ../source/basics.txt:56
+# 70d627ed3a8d4fccb205b1182be57641
+msgid "Almost all applications will connect to the \"delete-event\" signal of the top-level window. It is emitted if a user requests that a toplevel window is closed. The default handler for this signal destroys the window, but does not terminate the application. Connecting the \"delete-event\" signal to the function :func:`Gtk.main_quit` will result in the desired behaviour."
+msgstr "幾乎所有應用程式都會連接最上層視窗的〝delete-event〞信號，當使用者要求關閉最上層視窗時，它被發送出來；這個信號預設的處理是銷毀這個視窗，但是並沒有結束應用程式；連接〝delete-event〞信號到 :func:`Gtk.main_quit` 這個函式才會真正結束應用程式。"
+
+#: ../source/basics.txt:66
+# 72755f64dedf4e4abff5358fc148d04c
+msgid "Calling :func:`Gtk.main_quit` makes the main loop inside of :func:`Gtk.main` return."
+msgstr "呼叫 :func:`Gtk.main_quit` 讓程式從 :func:`Gtk.main` 裡面的主迴圈跳出來。"
+
+#: ../source/basics.txt:69
+# 8bd75530e6cc4e7ba47d6035a5a19513
+msgid "Properties"
+msgstr ""
+
+#: ../source/basics.txt:70
+# cd07ae732a92407dbd541935ad23c64c
+msgid "Properties describe the configuration and state of widgets. As for signals, each widget has its own particular set of properties. For example, a button has the property \"label\" which contains the text of the label widget inside the button. You can specify the name and value of any number of properties as keyword arguments when creating an instance of a widget. To create a label aligned to the right with the text \"Hello World\" and an angle of 25 degrees, use:"
+msgstr ""
+
+#: ../source/basics.txt:81
+# 388e665c8a7b44678d9b42d0621939a7
+msgid "which is equivalent to"
+msgstr ""
+
+#: ../source/basics.txt:90
+# 4f4a608797b74529bc040cef30c4f00e
+msgid "Instead of using getters and setters you can also get and set the properties with ``widget.get_property(\"prop-name\")`` and ``widget.set_property(\"prop-name\", value)``, respectively."
+msgstr ""
+
